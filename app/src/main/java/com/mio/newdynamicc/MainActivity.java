@@ -1,5 +1,6 @@
 package com.mio.newdynamicc;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,12 +19,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
         userNameET = (EditText) findViewById(R.id.userName);
         passwordET = (EditText) findViewById(R.id.password);
         findViewById(R.id.login1).setOnClickListener(this);
         findViewById(R.id.login2).setOnClickListener(this);
+        findViewById(R.id.sort).setOnClickListener(this);
         tv.setText(newStringFromJNI());
     }
 
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             result = CUtils.loginOne(userName.getBytes(), password.getBytes());
         } else if (id == R.id.login2) {
             result = CUtils.loginTwo(userName, password);
+        } else if (id == R.id.sort) {
+            startActivity(new Intent(this, SortActivity.class));
         }
         switch (result) {
             case 1:
@@ -58,9 +61,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 msg = "用户名不存在";
                 break;
             default:
-                msg = "网络错误";
+                msg = null;
                 break;
         }
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        if (msg != null)
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

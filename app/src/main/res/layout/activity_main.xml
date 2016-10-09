@@ -40,4 +40,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="登陆-方式1" />
+
+    <Button
+        android:id="@+id/sort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="排序测试" />
 </LinearLayout>

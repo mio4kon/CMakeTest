@@ -32,6 +32,18 @@ add_library( # Sets the name of the library.
              # file are automatically included.
              src/main/cpp/login-lib.cpp )
 
+
+add_library( # Sets the name of the library.
+             math-lib
+
+             # Sets the library as a shared library.
+             SHARED
+
+             # Provides a relative path to your source file(s).
+             # Associated headers in the same location as their source
+             # file are automatically included.
+             src/main/cpp/math-lib.cpp )
+
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because system libraries are included in the search path by
 # default, you only need to specify the name of the public NDK library
@@ -59,6 +71,13 @@ target_link_libraries( # Specifies the target library.
 
 target_link_libraries( # Specifies the target library.
                        login-lib
+
+                       # Links the target library to the log library
+                       # included in the NDK.
+                       ${log-lib} )
+
+target_link_libraries( # Specifies the target library.
+                       math-lib
 
                        # Links the target library to the log library
                        # included in the NDK.

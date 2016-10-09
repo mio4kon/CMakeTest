@@ -11,6 +11,8 @@ Java_com_mio_newdynamicc_MainActivity_stringFromJNI(
     return env->NewStringUTF(hello.c_str());
 }
 
+
+
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_mio_newdynamicc_MainActivity_newStringFromJNI(JNIEnv *env, jobject instance) {
